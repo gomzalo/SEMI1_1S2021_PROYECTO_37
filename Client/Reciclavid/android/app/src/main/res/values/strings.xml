@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Reciclavid</string>
+    <string name="title_activity_main">Reciclavid</string>
+    <string name="package_name">semi.g37.reciclavid</string>
+    <string name="custom_url_scheme">semi.g37.reciclavid</string>
+</resources>
