@@ -1,0 +1,7 @@
+{
+  "name": "Reciclavid",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
