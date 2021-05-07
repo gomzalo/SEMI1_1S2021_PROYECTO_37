@@ -8,4 +8,5 @@ Para tener una capa extra de seguridad en nuestra infraestructura se decide hace
 El cual nos permite configurar una red, segun nuestras necesidades.
 
 
-![Topologia](https://github.com/gomzalo/SEMI1_1S2021_PROYECTO_37/blob/master/Images/Tecnico/vpc.png "VPC")
+![VPC](/Images/Tecnico/vpc.png "VPC")
+
