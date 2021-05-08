@@ -86,7 +86,7 @@ const Login: React.FC = () => {
             <IonItem>
             <IonLabel position="floating"> Username </IonLabel>
             <IonInput
-                type="email"
+                type="text"
                 value={username}
                 onIonChange={(e) => setusername(e.detail.value!)}
                 >

@@ -12,8 +12,9 @@ function validateEmail(email: string) {
 }
 const Registro: React.FC = () => {
   const history = useHistory();
+  const [nombre, setNombre] = useState<string>("Tepo kun");
   const [email, setEmail] = useState<string>("eve.holt@reqres.in");
-  const [username, setUsername] = useState<string>("Tepo");
+  const [username, setUsername] = useState<string>("Teposad");
   const [password, setPassword] = useState<string>("pistol");
   const [iserror, setIserror] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
@@ -82,14 +83,14 @@ const Registro: React.FC = () => {
             />
           </IonCol>
         </IonRow>
-          <IonRow>
+        <IonRow>
             <IonCol>
             <IonItem>
-            <IonLabel position="floating">Email</IonLabel>
+            <IonLabel position="floating"> Nombre</IonLabel>
             <IonInput
-                type="email"
-                value={email}
-                onIonChange={(e) => setEmail(e.detail.value!)}
+                type="text"
+                value={nombre}
+                onIonChange={(e) => setNombre(e.detail.value!)}
                 >
             </IonInput>
             </IonItem>
@@ -102,6 +103,19 @@ const Registro: React.FC = () => {
             <IonInput
                 type="text"
                 value={username}
+                onIonChange={(e) => setUsername(e.detail.value!)}
+                >
+            </IonInput>
+            </IonItem>
+            </IonCol>
+          </IonRow>
+          <IonRow>
+            <IonCol>
+            <IonItem>
+            <IonLabel position="floating">Email</IonLabel>
+            <IonInput
+                type="email"
+                value={email}
                 onIonChange={(e) => setEmail(e.detail.value!)}
                 >
             </IonInput>
@@ -128,7 +142,7 @@ const Registro: React.FC = () => {
               </p>
               <IonButton expand="block" onClick={handleRegistro}>Registrarme</IonButton>
               <p style={{ fontSize: "medium" }}>
-                  ¿Ya tienes una cuenta? <a href="registro">¡Inicia sesión!</a>
+                  ¿Ya tienes una cuenta? <a href="login">¡Inicia sesión!</a>
               </p>
 
             </IonCol>
