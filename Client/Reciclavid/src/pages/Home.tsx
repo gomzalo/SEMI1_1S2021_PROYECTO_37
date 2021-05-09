@@ -44,7 +44,7 @@ const Home: React.FC = () => {
   function descripcion(tags: string | string[]){
     var tipo_material = "";
 
-    if(tags.includes('Bottle') || tags.includes('Perfume') || tags.includes('Beverage') || tags.includes('Glass'))
+    if(tags.includes('Perfume') || tags.includes('Beverage') || tags.includes('Glass'))
     {
       tipo_material = "Vidrio"
       descripciones = "El vidrio es inorgánico y puede ser reciclado tantas veces como sea posible, dado que, no pierde características ni propiedades, ya que en la naturaleza puede tardar hasta 4000 años en destruirse. Además puede ser usado para almacenar bebidas o alimentos ya que no altera su sabor."
@@ -131,7 +131,7 @@ const Home: React.FC = () => {
         // console.log(res.data);
         
         setMessage("¡Se ha guardado la imagen en tu cuenta!");
-        setIserror(true)
+        setIserror(false)
         
       })
       .catch(error=>{
@@ -156,7 +156,7 @@ const Home: React.FC = () => {
         console.log(res.data);
         setDescripcionA(traduccion);
         setMessage("¡Se ha traducido la descripción correctamente!");
-        setIserror(true)
+        setIserror(false)
       })
       .catch(error=>{
         setMessage("¡Ocurrio un error!");
@@ -200,7 +200,7 @@ const Home: React.FC = () => {
                   isOpen={iserror}
                   onDidDismiss={() => setIserror(false)}
                   cssClass="my-custom-class"
-                  header={"¡Muy bien!"}
+                  header={"¡Atencion!"}
                   message={message}
                   buttons={["Aceptar"]}
               />
