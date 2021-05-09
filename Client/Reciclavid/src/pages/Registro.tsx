@@ -13,10 +13,10 @@ function validateEmail(email: string) {
 const Registro: React.FC = () => {
   
   const history = useHistory();
-  const [nombre, setNombre] = useState<string>("Tepo kun");
-  const [email, setEmail] = useState<string>("eve.holt@reqres.in");
-  const [username, setUsername] = useState<string>("Teposad");
-  const [password, setPassword] = useState<string>("pistol");
+  const [nombre, setNombre] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const [iserror, setIserror] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
   const handleRegistro = () => {
@@ -47,15 +47,29 @@ const Registro: React.FC = () => {
     const api = axios.create({
         baseURL: `http://localhost:3525/`
     })
-    api.post("/registro2", registroData)
-        .then(res => {
-            localStorage.setItem("usuario_activo", username);           
-            history.push("/dashboard/" + username);
-         })
-         .catch(error=>{
-            setMessage("¡Error! Por favor crea una cuenta.");
-            setIserror(true)
-         })
+    // Cognito
+    api.post("registro", registroData)
+      .then(res => {
+          // localStorage.setItem("usuario_activo", username);           
+          // history.push("/dashboard/" + username);
+          
+        })
+        .catch(error=>{
+          setMessage("¡Error! Por favor crea una cuenta.");
+          setIserror(true)
+        })
+    // DB
+    api.post("registro2", registroData)
+      .then(res => {
+          localStorage.setItem("usuario_activo", username);           
+          history.push("/dashboard/" + username);
+          setMessage("¡Se ha registrado exitosamente!");
+          setIserror(false)
+        })
+        .catch(error=>{
+          setMessage("¡Error! Por favor crea una cuenta.");
+          setIserror(true)
+        })
   };
 
   return (
@@ -73,9 +87,9 @@ const Registro: React.FC = () => {
                 isOpen={iserror}
                 onDidDismiss={() => setIserror(false)}
                 cssClass="my-custom-class"
-                header={"Error!"}
+                header={"¡Error!"}
                 message={message}
-                buttons={["Dismiss"]}
+                buttons={["Aceptar"]}
             />
           </IonCol>
         </IonRow>
@@ -94,6 +108,7 @@ const Registro: React.FC = () => {
             <IonInput
                 type="text"
                 value={nombre}
+                placeholder="Ingresa tu nombre"
                 onIonChange={(e) => setNombre(e.detail.value!)}
                 >
             </IonInput>
@@ -107,6 +122,7 @@ const Registro: React.FC = () => {
             <IonInput
                 type="text"
                 value={username}
+                placeholder="Ingresa tu nombre de usuario" 
                 onIonChange={(e) => setUsername(e.detail.value!)}
                 >
             </IonInput>
@@ -120,6 +136,7 @@ const Registro: React.FC = () => {
             <IonInput
                 type="email"
                 value={email}
+                placeholder="Ingresa tu nombre de correo electronico" 
                 onIonChange={(e) => setEmail(e.detail.value!)}
                 >
             </IonInput>
@@ -133,6 +150,7 @@ const Registro: React.FC = () => {
               <IonInput
                 type="password"
                 value={password}
+                placeholder="Ingresa tu nombre de contraseña" 
                 onIonChange={(e) => setPassword(e.detail.value!)}
                 >
               </IonInput>

@@ -7,7 +7,7 @@ import { useHistory, RouteComponentProps } from "react-router-dom";
 import { IonGrid, IonRow, IonCol } from '@ionic/react';
 import { IonItem, IonLabel, IonAvatar } from '@ionic/react';
 
-import { camera, trash, close } from 'ionicons/icons';
+import { camera, trash, close, closeCircle } from 'ionicons/icons';
 
 //Importando hook galeria
 import { usePhotoGallery } from '../hooks/usePhotoGallery';
@@ -34,24 +34,27 @@ const Dashboard: React.FC<ResetProps> = ({ match }) => {
     const history = useHistory();
     const { photos, takePhoto } = usePhotoGallery();
     const [users, setUsers] = useState<Array<any>>([]);
-    // useEffect(() => {
-    //   const api = axios.create({
-    //       baseURL: `https://reqres.in/api`
-    //   })
-    //   api.get("/users")
-    //       .then(res => {             
-    //           setUsers(res.data.data)
-    //       })
-    //       .catch(error=>{
-    //           console.log("Error fetching data")
-    //       })
-    // }, [])
-    // if(usuario_activo != "null"){}
+    const [iserror, setIserror] = useState<boolean>(false);
+    const [message, setMessage] = useState<string>("");
+    
     return (
       <IonPage>
         <IonHeader>
           <IonToolbar>
-            <IonTitle>Galeria</IonTitle>
+          <IonRow>
+            <IonCol>
+              <IonTitle>Galeria</IonTitle>
+            </IonCol>
+            <IonCol>
+              <IonFab vertical="center" horizontal="end">
+                <IonFabButton onClick={() => {
+                    history.push("/login");
+                  }}>
+                  <IonIcon icon={closeCircle}></IonIcon>
+                </IonFabButton>
+              </IonFab>
+            </IonCol>
+          </IonRow>
           </IonToolbar>
         </IonHeader>
         <IonContent fullscreen className="ion-padding ion-text-center">
@@ -66,14 +69,14 @@ const Dashboard: React.FC<ResetProps> = ({ match }) => {
               {photos.map((photo, index) => (
                 <IonCol size="6" key={index}>
                   <IonImg src={photo.webviewPath} onClick={() => {
-                    var imagen_data = {
-                      username: "test",
+                    var user_data = {
+                      username: match.params.id,
                       img: photo.webviewPath
                     }
                     
-                    localStorage.setItem('imagen_data', JSON.stringify(imagen_data));
+                    localStorage.setItem('user_data', JSON.stringify(user_data));
                     // console.log(JSON.stringify(imagen_data));
-                    history.push("/home/" + match.params.id);
+                    history.push("/home/");
                   }}/>
                 </IonCol>
               ))}
