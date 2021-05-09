@@ -49,30 +49,32 @@ const Home: React.FC = () => {
       tipo_material = "Vidrio"
       descripciones = "El vidrio es inorgánico y puede ser reciclado tantas veces como sea posible, dado que, no pierde características ni propiedades, ya que en la naturaleza puede tardar hasta 4000 años en destruirse. Además puede ser usado para almacenar bebidas o alimentos ya que no altera su sabor."
       manualidades = "https://ar.pinterest.com/marcezanetti/reciclado-vidrio/"
-    }
-    if(tags.includes('Plastic'))
+    } else if(tags.includes('Plastic'))
     {
       tipo_material = "Plastico"
       descripciones = "El plástico es inorgánico y uno de los desechos sólidos que más abundan ya que muchos son de un solo uso lo que significa “usar y tirar” es conveniente llevar las botellas de bebidas, envases de cosméticos, bolsas, etc. a un lugar donde puedan ser clasificados según su tipo y transformados de manera que no estén contaminando la flora y fauna del planeta."
       manualidades = "https://ar.pinterest.com/marcezanetti/reciclado-vidrio/"
-    }
-    if(tags.includes('Carton') || tags.includes('Box') || tags.includes('Cylinder'))
+    } else if(tags.includes('Carton') || tags.includes('Box') || tags.includes('Cylinder'))
     {
       tipo_material = "Cartón"
       descripciones = "El cartón es inorgánico y  debe llevarse a un centro de recolección y lo más limpio posible para evitar procesos largos de recuperación del material. \nPor cada tonelada de cartón que se recicla se ahorran 140 litros de petróleo, cincuenta mil litros de agua y 900 kilos de dióxido de carbono (CO2), el principal causante del cambio climático, frente a lo que requiere fabricar una tonelada de cartón nuevo."
       manualidades = "https://www.pinterest.es/search/pins/?q=reciclaje%20de%20carton&rs=typed&term_meta[]=reciclaje%7Ctyped&term_meta[]=de%7Ctyped&term_meta[]=carton%7Ctyped"
-    }
-    if(tags.includes('Aluminium') || tags.includes('Can') || tags.includes('Canned Good'))
+    } else if(tags.includes('Aluminium') || tags.includes('Can') || tags.includes('Canned Good'))
     {
       tipo_material = "Lata"
       descripciones = "Las latas son inorganicas y una vez usadas y desechadas, han de depositarse en los contenedores de color amarillo de las ciudades. Estos contenedores son los que muchos conocen como contenedores para envases y plástico. Estos materiales son fáciles de fundir por lo mismo cuando llegan a las grandes plantas de reciclaje, se separan las impurezas, se funden y se convierten en otras piezas."
       manualidades = "https://www.pinterest.es/search/pins/?rs=ac&len=2&q=reciclaje%20de%20latas%20de%20aluminio&eq=reciclaje%20de%20latas&etslf=7852&term_meta[]=reciclaje%7Cautocomplete%7C1&term_meta[]=de%7Cautocomplete%7C1&term_meta[]=latas%7Cautocomplete%7C1&term_meta[]=de%7Cautocomplete%7C1&term_meta[]=aluminio%7Cautocomplete%7C1"
-    }
-    if(tags.includes('Newspaper') || tags.includes('Paper') || tags.includes('Text') || tags.includes('Page'))
+    } else if(tags.includes('Newspaper') || tags.includes('Paper') || tags.includes('Text') || tags.includes('Page'))
     {
       tipo_material = "Papel"
       descripciones = "El papel es orgánico, puede deshacerse fácilmente en la naturaleza aunque muchas veces como llevan tinta esto hace que se contamine el suelo, el papel está compuesto principalmente de celulosa de árboles jóvenes, por lo que la producción de papel representa un 35% de la tala de árboles a nivel mundial, he allí la importancia de reciclar el papel que usamo."
       manualidades = "https://www.pinterest.es/search/pins/?q=reciclaje%20de%20papel&rs=typed&term_meta[]=reciclaje%7Ctyped&term_meta[]=de%7Ctyped&term_meta[]=papel%7Ctyped"
+    } else {
+      tipo_material = "Desconocido"
+      descripciones = "Material no reconocido."
+      manualidades = "https://plantillasdememes.com/img/plantillas/a-sos-re-troll11604026694.jpg"
+      setMessage("No se reconocio el material, vuelve a intentarlo.");
+      setIserror(true)
     }
     
     console.log(descripciones);
@@ -103,7 +105,7 @@ const Home: React.FC = () => {
           //   document.getElementById('id_etiquetas').textContent;
           // }
           setMessage("¡Se ha completado el analisis!");
-          setIserror(true)
+          setIserror(false)
         }        
       })
       .catch(error=>{
