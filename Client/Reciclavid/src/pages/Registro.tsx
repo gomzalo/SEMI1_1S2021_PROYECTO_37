@@ -52,7 +52,8 @@ const Registro: React.FC = () => {
       .then(res => {
           // localStorage.setItem("usuario_activo", username);           
           // history.push("/dashboard/" + username);
-          
+          setMessage("Confirma tu correo para iniciar sesión.");
+          setIserror(false)
         })
         .catch(error=>{
           setMessage("¡Error! Por favor crea una cuenta.");
@@ -61,8 +62,8 @@ const Registro: React.FC = () => {
     // DB
     api.post("registro2", registroData)
       .then(res => {
-          localStorage.setItem("usuario_activo", username);           
-          history.push("/dashboard/" + username);
+          // localStorage.setItem("usuario_activo", username);           
+          history.push("/login");
           setMessage("¡Se ha registrado exitosamente!");
           setIserror(false)
         })
@@ -87,7 +88,7 @@ const Registro: React.FC = () => {
                 isOpen={iserror}
                 onDidDismiss={() => setIserror(false)}
                 cssClass="my-custom-class"
-                header={"¡Error!"}
+                header={"Atencion!"}
                 message={message}
                 buttons={["Aceptar"]}
             />
