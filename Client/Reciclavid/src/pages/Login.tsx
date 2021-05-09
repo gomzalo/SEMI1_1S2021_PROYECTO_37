@@ -43,11 +43,13 @@ const Login: React.FC = () => {
         baseURL: `https://reqres.in/api`
     })
     api.post("/login", loginData)
-        .then(res => {             
+        .then(res => {
+            
+            localStorage.setItem('usuario_activo', usuario_activo);
             history.push("/dashboard/" + username);
          })
          .catch(error=>{
-            setMessage("Auth failure! Please create an account");
+            setMessage("¡Ocurrio un error!");
             setIserror(true)
          })
   };

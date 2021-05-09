@@ -1,6 +1,6 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar,
          IonItemDivider, IonFab, IonFabButton, IonIcon,
-         IonImg, IonActionSheet} from '@ionic/react';
+         IonImg, IonActionSheet, IonList, IonThumbnail} from '@ionic/react';
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { useHistory, RouteComponentProps } from "react-router-dom";
@@ -15,6 +15,12 @@ interface ResetProps
   extends RouteComponentProps<{
     id: string;
   }> {}
+
+type Item = {
+  src: string;
+  text: string;
+};
+const items: Item[] = [{ src: 'http://placekitten.com/g/200/300', text: 'a picture of a cat' }];
 
 const Dashboard: React.FC<ResetProps> = ({ match }) => {
   const history = useHistory();
@@ -36,51 +42,30 @@ const Dashboard: React.FC<ResetProps> = ({ match }) => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-  <IonTitle>Galeria</IonTitle>
+          <IonTitle>Galeria</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen className="ion-padding ion-text-center">
-      <IonRow>
-              <IonCol>
-                  <h4>Bienvenido: {match.params.id}</h4>
-                  <IonItemDivider></IonItemDivider>
-              </IonCol>
-          </IonRow>
-        <IonGrid>
-          
-          {/* <IonRow>
-              <IonCol>
-                <IonFab vertical="bottom" horizontal="center" slot="fixed">
-                  <IonFabButton onClick={() => takePhoto()}>
-                    <IonIcon icon={camera}></IonIcon>
-                  </IonFabButton>
-                </IonFab>
-                  <IonItemDivider></IonItemDivider>
-              </IonCol>
-          </IonRow> */}
-         
-          {/* <IonRow>
+        <IonRow>
             <IonCol>
-              {users.map((user, i) => {
-                return (
-                  <IonItem key={i}>
-                    <IonAvatar>
-                        <img src={user.avatar} />
-                    </IonAvatar>
-                    <IonLabel>
-                        <h2 style={{ paddingLeft: "10px" }}>{user.first_name + " " + user.last_name} </h2>
-                        <p style={{ paddingLeft: "10px" }}>{user.email}</p>
-                    </IonLabel>
-                  </IonItem>
-                );
-              })}
+                <h4>Bienvenido: {match.params.id}</h4>
+                <IonItemDivider></IonItemDivider>
             </IonCol>
-          </IonRow> */}
-
+        </IonRow>
+        <IonGrid>
           <IonRow>
             {photos.map((photo, index) => (
               <IonCol size="6" key={index}>
-                <IonImg src={photo.webviewPath} />
+                <IonImg src={photo.webviewPath} onClick={() => {
+                  var imagen_data = {
+                    username: "test",
+                    img: photo.webviewPath
+                  }
+                  
+                  localStorage.setItem('imagen_data', JSON.stringify(imagen_data));
+                  // console.log(JSON.stringify(imagen_data));
+                  history.push("/home/" + );
+                }}/>
               </IonCol>
             ))}
           </IonRow>
