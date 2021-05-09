@@ -38,7 +38,7 @@ const Home: React.FC = () => {
     }
   
   const api = axios.create({
-      baseURL: `http://localhost:3525/`
+      baseURL: `http://10.0.1.65:3525/`
   })
 
   function descripcion(tags: string | string[]){
@@ -123,7 +123,7 @@ const Home: React.FC = () => {
     }
   
   const api = axios.create({
-      baseURL: `http://localhost:3525/`
+      baseURL: `http://10.0.1.65:3525/`
   })
   api.post("subirFoto", subirData)
     .then(res => {
@@ -148,7 +148,7 @@ const Home: React.FC = () => {
     }
     console.log(JSON.stringify(traducirData));
   const api = axios.create({
-      baseURL: `http://localhost:3525/`
+      baseURL: `http://10.0.1.65:3525/`
   })
   api.post("traducirDescripcion", traducirData)
     .then(res => {
