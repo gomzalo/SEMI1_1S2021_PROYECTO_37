@@ -1,0 +1,6 @@
+version: "2.4"
+services:
+  client:
+    build: ./
+    ports:
+      - "3525:3525"
