@@ -20,7 +20,12 @@ let aws_keys = {
         region: 'us-east-2',
         accessKeyId: "AKIASKVPP37UCY75VAVJ",
         secretAccessKey: "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"        
+    },
+    cognito:{
+        UserPoolId: 'us-east-2_3SKhmIeGg',
+        ClientId: '3lvu99hpsqjg5fgfa4vtvkr313'
     }
+
 
 }
 module.exports = aws_keys
