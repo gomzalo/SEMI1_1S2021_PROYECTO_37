@@ -50,8 +50,8 @@ const Login: React.FC = () => {
         var auth_response = res.data.autentication;  
         // console.log(res.data);
         if(auth_response == "true"){
-          // localStorage.setItem('usuario_activo', username);
-          // history.push("/dashboard/" + username);
+          localStorage.setItem('usuario_activo', username);
+          history.push("/dashboard/" + username);
         }else{
           setMessage("¡Verifica tu correo primero!");
           setIserror(true)
@@ -68,8 +68,8 @@ const Login: React.FC = () => {
             var auth_response = res.data.autentication;  
             // console.log(res.data);
             if(auth_response == "true"){
-              localStorage.setItem('usuario_activo', username);
-              history.push("/dashboard/" + username);
+              // localStorage.setItem('usuario_activo', username);
+              // history.push("/dashboard/" + username);
             }else{
               setMessage("¡Credenciales incorrectas!");
               setIserror(true)
