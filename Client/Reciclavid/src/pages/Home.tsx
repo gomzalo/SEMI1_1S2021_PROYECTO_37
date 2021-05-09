@@ -3,7 +3,9 @@ import ExploreContainer from '../components/ExploreContainer';
 import './Home.css';
 
 const Home: React.FC = () => {
-  var imagen_data = localStorage.getItem('imagen_data')
+  var imagen_data = localStorage.getItem("imagen_data")
+  console.log(imagen_data)
+  // var imagen = JSON.parse(imagen_data);
   return (
     <IonPage>
       <IonHeader>
@@ -21,7 +23,8 @@ const Home: React.FC = () => {
         <IonGrid>
           <IonRow>
             <IonCol>
-              <IonImg src={imagen_data.img}></IonImg>
+              img
+              {/* <IonImg src={imagen}></IonImg> */}
             </IonCol>
           </IonRow>
         </IonGrid>

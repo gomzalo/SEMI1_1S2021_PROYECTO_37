@@ -11,6 +11,7 @@ function validateEmail(email: string) {
     return re.test(String(email).toLowerCase());
 }
 const Registro: React.FC = () => {
+  
   const history = useHistory();
   const [nombre, setNombre] = useState<string>("Tepo kun");
   const [email, setEmail] = useState<string>("eve.holt@reqres.in");
@@ -37,16 +38,19 @@ const Registro: React.FC = () => {
     }
 
     const registroData = {
+        "username": username,
+        "nombre": nombre,
         "email": email,
         "password": password
     }
 
     const api = axios.create({
-        baseURL: `https://reqres.in/api`
+        baseURL: `http://localhost:3525/`
     })
-    api.post("/register", registroData)
-        .then(res => {             
-            history.push("/dashboard/" + email);
+    api.post("/registro2", registroData)
+        .then(res => {
+            localStorage.setItem("usuario_activo", username);           
+            history.push("/dashboard/" + username);
          })
          .catch(error=>{
             setMessage("¡Error! Por favor crea una cuenta.");

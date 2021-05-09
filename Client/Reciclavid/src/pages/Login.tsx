@@ -11,6 +11,8 @@ function validateUsername(username: string) {
     return re.test(String(username).toLowerCase());
 }
 const Login: React.FC = () => {
+  // localStorage.setItem("usuario_activo", "null");
+
   const history = useHistory();
   const [username, setusername] = useState<string>("eve.holt@reqres.in");
   const [password, setPassword] = useState<string>("cityslicka");
@@ -40,12 +42,11 @@ const Login: React.FC = () => {
     }
 
     const api = axios.create({
-        baseURL: `https://reqres.in/api`
+        baseURL: `http://localhost:3525/`
     })
-    api.post("/login", loginData)
+    api.post("/login2", loginData)
         .then(res => {
-            
-            localStorage.setItem('usuario_activo', usuario_activo);
+            localStorage.setItem('usuario_activo', username);
             history.push("/dashboard/" + username);
          })
          .catch(error=>{
