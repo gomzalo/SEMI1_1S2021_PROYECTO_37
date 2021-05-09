@@ -45,7 +45,7 @@ const Registro: React.FC = () => {
     }
 
     const api = axios.create({
-        baseURL: `http://10.0.1.65:3525/`
+        baseURL: `http://3.142.98.140:3525/`
     })
     // Cognito
     api.post("registro", registroData)
