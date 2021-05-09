@@ -53,8 +53,8 @@ const Login: React.FC = () => {
           // localStorage.setItem('usuario_activo', username);
           // history.push("/dashboard/" + username);
         }else{
-          // setMessage("¡Credenciales incorrectas!");
-          // setIserror(true)
+          setMessage("¡Verifica tu correo primero!");
+          setIserror(true)
         }
      })
      .catch(error=>{
