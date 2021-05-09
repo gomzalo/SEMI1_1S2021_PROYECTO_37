@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "servidor del proyecto final de seminario 1",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "start": "nodemon index.js"
   },
@@ -12,10 +13,14 @@
   "author": "Ronald Ordoñez",
   "license": "ISC",
   "dependencies": {
+    "amazon-cognito-identity-js": "^4.6.1",
     "aws-sdk": "^2.901.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "nodemon": "^2.0.7"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.7.0"
   }
 }
